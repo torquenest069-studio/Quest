@@ -28,7 +28,7 @@ const Footer = () => {
   </a>
 </div>
 <span className="developer-credit">
-            designed and developed by <a href="#!">Link</a>
+            designed and developed by <a href="/">Home</a>
           </span>
         </div>
 
