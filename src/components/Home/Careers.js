@@ -27,7 +27,7 @@ const Careers = () => {
   return (
     <section className="careers-page">
       <div className="careers-hero">
-        <div className="container">
+        <div className="carcontainer">
           <span className="section-label">JOIN OUR TEAM</span>
           <h2>Shape the Future of Quality</h2>
           <p>We are looking for passionate pharmaceutical experts dedicated to regulatory excellence and manufacturing safety.</p>

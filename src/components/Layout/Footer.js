@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Brand Identity Column */}
         <div className="footer-brand">
           <div className="footer-logo">
-            <ShieldCheck size={28} className="logo-icon-svg" />
+            <ShieldCheck size={28} className="logo-icon-svg" aria-label="QUEST Pharma Solutions Logo" />
             <div className="logo-text">
               <h3>QUEST Pharma Solutions</h3>
               <span>Global Quality & GMP Compliance</span>
@@ -36,7 +36,7 @@ const Footer = () => {
 
         {/* Navigation Grid */}
         <div className="footer-nav-grid">
-          <div className="nav-col">
+          <div className="nav-col"  aria-label="Footer Services">
             <h4>SERVICES</h4>
             <ul>
               <li><a href="#">GMP Audits</a></li>

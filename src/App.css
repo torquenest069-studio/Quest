@@ -67,12 +67,14 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
 
 .nav-item {
   position: relative;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   color: #64748b; /* Muted gray for inactive items */
-  cursor: pointer;
   padding: 10px 0; /* Vertical space for the underline */
   transition: color 0.2s ease-in-out;
+}
+.nav-item:focus-visible::after {
+  width: 100%;
 }
 
 .nav-item:hover {
@@ -104,17 +106,7 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   color: #003366;
 }
 
-/* The Underline Effect */
-.nav-menu li::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; /* Positions it exactly like the image */
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #4fd1c5; /* Specific Teal from your image */
-  transition: width 0.3s ease;
-}
+
 
 /* Show underline on Hover and Active state */
 .nav-menu li:hover::after,
@@ -142,6 +134,11 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
 }
+.nav-cta:focus-visible {
+  box-shadow: 0 0 0 5px rgba(37, 95, 255, 0.4);
+  transform: translateY(-1px);
+}
+
 
 /* Neon Hanover (Hover) Effect */
 .nav-cta:hover {
@@ -166,6 +163,11 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   cursor: pointer;
   z-index: 1002;
 }
+.menu-toggle:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 6px;
+}
+
 
 .menu-toggle span {
   position: absolute;
@@ -522,10 +524,36 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   box-shadow: 0 4px 12px rgba(0, 35, 71, 0.15); /* Adds depth shown in the image */
 }
 
+/* 1. The Container - Adding the base styles and transition */
+.service-main-info {
+  background: #fff; /* Ensuring there is a background for the shadow to show */
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+  
+  /* Smoothly animates the lift and shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* 2. The Hover State - Creating the "lift" effect */
+.service-main-info:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 35, 71, 0.07);
+  border-color: #e2e8f0;
+}
+
+/* 3. Typography Styles */
 .service-main-info h3 {
   font-size: 1.25rem;
   color: #002347;
   margin-bottom: 10px;
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+/* Optional: Change title color on hover */
+.service-main-info:hover h3 {
+  color: #007bff; 
 }
 
 .service-main-info p {
@@ -533,7 +561,6 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   font-size: 0.95rem;
   line-height: 1.6;
 }
-
 /* --- Key Areas Detail --- */
 .key-areas-label {
   display: block;
@@ -626,7 +653,7 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
 .section-tag-teal {
   color: #2dd4bf; /* Brand Teal */
   font-weight: 800;
-  font-size: 12px;
+  font-size: 25px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -737,6 +764,29 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   /* Dual-tone background: clean white to ultra-faint cool slate */
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); 
   padding: 32px;
+  border-radius: 16px; 
+  border: 1px solid #edf2f7; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  
+  /* Advanced transition for ultra-smooth movement */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  min-height: 220px; 
+  position: relative;
+  cursor: pointer;
+  
+  /* Staggered Animation Entry */
+  opacity: 0; 
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Added Hover State */
+.expertise-item {
+  /* Dual-tone background: clean white to ultra-faint cool slate */
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); 
+  padding: 32px;
   border-radius: 16px; /* Smooth rounded corners from reference */
   border: 1px solid #edf2f7; /* Clinical grey border */
   display: flex;
@@ -749,6 +799,24 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   /* Staggered Animation Entry */
   opacity: 0; /* Starts invisible for the pop-in effect */
   animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Added Hover state - utilizing your existing transition */
+/* 1. Ensure the H5 has a transition so the change is smooth */
+.expertise-item h5, 
+.regulatory-card h5, 
+.feature-card h5 {
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 12px;
+  color: #002347; /* Your base dark blue color */
+}
+
+/* 2. Trigger the change when the PARENT card is hovered */
+.expertise-item:hover h5, 
+.regulatory-card:hover h5, 
+.feature-card:hover h5 {
+  color: #007bff; /* Changes to a vibrant blue on hover */
+  transform: translateX(5px); /* Optional: slight nudge to the right */
 }
 
 /* --- Interactive Hover State --- */
@@ -964,7 +1032,7 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
 
 .section-subtitle {
   color: #2dd4bf; /* Brand Teal */
-  font-size: 11px;
+  font-size: 25px;
   font-weight: 800;
   letter-spacing: 2px;
 }
@@ -994,9 +1062,50 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
   background: #ffffff;
   padding: 40px;
   border-radius: 16px;
-  border: 1px solid #edf2f7; /* Clinical border */
-  transition: all 0.4s ease;
+  border: 1px solid #edf2f7;
   box-shadow: 0 4px 6px -1px rgba(0, 35, 71, 0.02);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+/* 1. Base style for the H5 inside the card */
+.regulatory-card h4 {
+  color: #002347;
+  margin-bottom: 15px;
+  font-weight: 600;
+  /* Smoothly animate the color and movement */
+  transition: all 0.4s ease; 
+}
+
+/* 2. Card Hover: Lifts the card */
+.regulatory-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 35, 71, 0.05);
+  border-color: #cbd5e1;
+}
+
+/* 3. Card Hover: Specifically changes the H5 */
+.regulatory-card:hover h4 {
+  color: #007bff; /* Change to your preferred highlight blue */
+  transform: translateX(5px); /* Subtle nudge to the right */
+}
+
+/* Added Hover State */
+.regulatory-card:hover {
+  /* Lifts the card up slightly */
+  transform: translateY(-10px);
+  
+  /* Creates a soft, professional depth effect */
+  box-shadow: 0 20px 25px -5px rgba(0, 35, 71, 0.05), 
+              0 10px 10px -5px rgba(0, 35, 71, 0.02);
+  
+  /* Slightly more defined border on hover */
+  border-color: #e2e8f0;
+}
+
+/* Optional: If there's an icon or specific title inside to highlight */
+.regulatory-card:hover h3 {
+  color: #004a99; /* Subtle shift to a deeper blue */
 }
 
 .regulatory-card:hover {
@@ -1141,7 +1250,7 @@ body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); backgrou
 .eyebrow {
   color: #2dd4bf;
   font-weight: 800;
-  font-size: 0.75rem;
+  font-size: 25px;
   letter-spacing: 2px;
   margin-bottom: 12px;
 }
@@ -1825,7 +1934,7 @@ CSS
 
 .nav-item.active {
   color: #2dd4bf; /* Brand Teal */
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .nav-item.active::after {
@@ -1926,6 +2035,7 @@ CSS
 }
 
 /* Feature Cards */
+/* The grid container */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1933,23 +2043,56 @@ CSS
   margin-bottom: 80px;
 }
 
+/* The individual feature card */
 .feature-card {
   background: #fff;
   padding: 40px;
   border-radius: 16px;
   border: 1px solid #f1f5f9;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  
+  /* Critical for smooth hover: tells the browser which properties to animate */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Hover State */
+.feature-card:hover {
+  /* Lifts the card up */
+  transform: translateY(-10px); 
+  
+  /* Deepens the shadow to simulate height */
+  box-shadow: 0 20px 40px rgba(0, 35, 71, 0.08); 
+  
+  /* Subtle border highlight */
+  border-color: #cbd5e1; 
+  cursor: pointer;
+}
+
+/* Typography styles */
 .feature-card h3 {
   margin: 20px 0 10px;
   color: #002347;
+  transition: color 0.3s ease; /* Smooth color shift if you choose to change it */
+}
+
+/* Optional: Make the heading change color on hover */
+.feature-card:hover h3 {
+  color: #007bff; /* Example: changes to a blue tone on hover */
 }
 
 .feature-card p {
   color: #64748b;
   font-size: 0.95rem;
   line-height: 1.5;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr; /* Stacks cards on mobile */
+  }
 }
 
 /* Stats Banner */
@@ -2017,134 +2160,205 @@ CSS
 
 
 /* Container & Global Careers Styles */
+/* Global safety */
+/* ---------- GLOBAL RESET ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .careers-page {
   padding-bottom: 100px;
+  overflow-x: hidden;
 }
 
-.container {
+/* ---------- HERO CONTAINER ---------- */
+.carcontainer {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 40px 20px;
+  width: 100%;
 }
 
-/* Benefits Grid */
+/* ---------- BENEFITS GRID ---------- */
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin: -60px auto 80px; /* Overlaps hero slightly */
+  margin: 40px auto 80px; /* ✅ real space below grid */
 }
 
 .benefit-card {
-  background: white;
+  background: #ffffff;
   padding: 40px 30px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   text-align: center;
   border: 1px solid #f1f5f9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  
+  /* Critical for smooth motion */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
 }
 
-/* No Openings State Styling */
-.no-openings-container {
-  text-align: center;
+/* 2. Base H3 - Added transition for color and movement */
+.benefit-card h3 {
+  color: #002347;
+  margin: 15px 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* 3. Card Hover Effect (The "Hanover") */
+.benefit-card:hover {
+  /* Lifts the card up */
+  transform: translateY(-10px);
+  /* Deepens the shadow for a floating look */
+  box-shadow: 0 20px 40px rgba(0, 35, 71, 0.1);
+  /* Darkens the border slightly */
+  border-color: #e2e8f0;
+}
+
+/* 4. H3 Hover Effect - Triggered when the card is hovered */
+.benefit-card:hover h3 {
+  color: #007bff; /* Changes title to blue */
+  transform: scale(1.05); /* Slightly enlarges the text */
+}
+
+.service-icon-box {
+ background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%); /* Blue to Teal gradient */
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px; /* Increased rounding for a softer look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px; /* Slightly adjusted for icon balance */
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 35, 71, 0.15); /* Adds depth shown in the image */
+}
+
+/* ---------- OPENINGS SECTION (IMPORTANT FIX) ---------- */
+.openings-section {
+  margin-top: 100px; /* ✅ GUARANTEED space after grid */
+}
+
+.openings-section h3 {
+  margin-bottom: 20px;
+}
+
+/* ---------- NO OPENINGS CARD ---------- */
+.no-openings-card {
   background: #f8fafc;
   border: 2px dashed #cbd5e1;
   border-radius: 20px;
   padding: 60px 40px;
+  text-align: center;
 }
 
-.no-openings-icon-circle {
-  width: 80px;
-  height: 80px;
-  background: rgba(13, 148, 136, 0.1);
+.no-openings-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.no-openings-icon {
+  font-size: 42px;
   color: #0d9488;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  margin: 0 auto 20px;
+  margin-bottom: 20px;
 }
 
-.no-openings-container h4 {
+.no-openings-content h4 {
   font-size: 1.8rem;
   color: #002347;
   margin-bottom: 10px;
 }
 
-.no-openings-lead {
+.no-openings-content p {
   color: #64748b;
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto 30px;
+  font-size: 1.05rem;
+  margin-bottom: 25px;
 }
 
-.cv-submission-box {
-  background: white;
+/* ---------- CV CTA ---------- */
+.cv-cta-box {
+  background: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.cv-submission-box p {
-  color: #002347;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-
-.btn-cv-submit {
+.btn-primary-neon {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
-  color: white;
-  padding: 12px 35px;
+  margin-top: 15px;
+  background: linear-gradient(135deg, #1e3a8a, #0d9488);
+  color: #ffffff;
+  padding: 12px 32px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 0.2s;
 }
 
-.btn-cv-submit:hover {
-  transform: translateY(-2px);
-}
-
-/* --- MEDIA QUERIES --- */
-
-/* Tablet View */
+/* ---------- TABLET ---------- */
 @media (max-width: 992px) {
   .benefits-grid {
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 20px;
+    margin-bottom: 60px;
   }
-  
-  .no-openings-container {
-    padding: 40px 20px;
+
+  .no-openings-card {
+    padding: 40px 25px;
   }
 }
 
-/* Mobile View */
+/* ---------- MOBILE ---------- */
 @media (max-width: 600px) {
   .benefits-grid {
     grid-template-columns: 1fr;
+    margin-bottom: 50px;
   }
 
-  .careers-hero h2 {
-    font-size: 2rem;
+  .openings-section {
+    margin-top: 70px;
   }
 
-  .no-openings-container h4 {
+  .no-openings-content h4 {
     font-size: 1.4rem;
   }
 
-  .cv-submission-box {
-    width: 100%;
+  .cv-cta-box {
     padding: 20px;
   }
 
-  .btn-cv-submit {
+  .btn-primary-neon {
     width: 100%;
     justify-content: center;
   }
+}
+
+
+
+
+
+
+
+
+/* Visible focus ONLY for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgba(0, 212, 255, 0.25);
+  border-radius: 6px; /* matches your button/card radius */
+}
+
+/* Remove focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }

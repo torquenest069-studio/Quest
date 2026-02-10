@@ -143,7 +143,7 @@ const Contact = () => {
                 </label>
               </div>
 
-             <button type="submit" className="btn-submit">
+             <button type="submit" className="btn-submit" aria-label="Submit Inquiry Form">
   Submit Inquiry
   <svg viewBox="0 0 24 24">
     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
