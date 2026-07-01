@@ -1,6 +1,6 @@
 'use client';
-export const WHATSAPP_NUMBER = '918431077234';
-export const EMAIL_ADDRESS = 'contact@questpharma.com';
+export const WHATSAPP_NUMBER = '919538601165';
+export const EMAIL_ADDRESS = 'ravi@questpharmasolution.com';
 
 export const CHAT_NODES = {
 

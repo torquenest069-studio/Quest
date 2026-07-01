@@ -5,6 +5,7 @@ import '../../App.css';
 import Image from 'next/image';
 import { Linkedin, Mail } from 'lucide-react';
 
+
 const Footer = () => {
   return (
     <footer className="footer-section">
@@ -12,11 +13,11 @@ const Footer = () => {
         <div className="footer-brand">
           <Link href="/" className="footer-logo">
             <div className="logo-wrapper" style={{ width: '160px', marginBottom: '8px' }}>
-              <Image 
-                src="/logo.png" 
-                alt="QUEST Pharma Solutions" 
-                width={160} 
-                height={60} 
+              <Image
+                src="/logo.png"
+                alt="QUEST Pharma Solutions"
+                width={160}
+                height={60}
                 className="brand-logo-img"
               />
             </div>
@@ -29,7 +30,7 @@ const Footer = () => {
             <a href="https://linkedin.com" className="social-btn" aria-label="LinkedIn">
               <Linkedin size={20} />
             </a>
-            <a href="mailto:contact@questpharma.com" className="social-btn" aria-label="Email">
+            <a href="mailto:ravi@questpharmasolution.com" className="social-btn" aria-label="Email">
               <Mail size={20} />
             </a>
           </div>
