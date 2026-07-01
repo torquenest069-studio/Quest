@@ -9,12 +9,26 @@ export const CHAT_NODES = {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   start: {
     id: 'start',
-    message: `Welcome to *QUEST Pharma Solutions* 👋
+    message: `Greetings from *QUEST Pharma Solutions* 👋
 
-We specialize in GMP audits, regulatory compliance, and pharmaceutical quality systems.`,
+I'm your digital compliance assistant. I can help you with GMP audits, regulatory remediation, and pharmaceutical quality systems.
+
+How can we assist your organization today?`,
     options: [
-      { label: 'Continue', next: 'ravi_intro' },
-      { label: 'Talk to Consultant', next: 'lead_name' },
+      { label: 'Explore Our Expertise', next: 'ravi_intro' },
+      { label: 'Urgent Regulatory Support', next: 'urgency_check' },
+      { label: 'I\'m just looking around', next: 'browsing' },
+    ],
+  },
+
+  browsing: {
+    id: 'browsing',
+    message: `No problem at all! Feel free to explore our expertise in GMP Audits, Regulatory Readiness, and Quality Systems.
+
+Whenever you're ready to discuss a specific requirement, I'm here. Would you like a brief overview of our Principal Consultant's background?`,
+    options: [
+      { label: 'Yes, tell me more', next: 'ravi_intro' },
+      { label: 'View Services', next: 'service_overview' },
     ],
   },
 
@@ -23,21 +37,35 @@ We specialize in GMP audits, regulatory compliance, and pharmaceutical quality s
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ravi_intro: {
     id: 'ravi_intro',
-    message: `👨‍⚕️ You will be guided by Ravi B, Founder & Principal Consultant.
+    message: `👨‍⚕️ You'll be working directly with **Ravi B**, Founder & Principal Consultant.
 
-With a strong foundation in pharmaceutical sciences and over two decades of global experience, he brings deep expertise in quality and regulatory excellence:
+With a Master's in Pharmaceutical Sciences and **24+ years** of global experience, Ravi has:
+• Conducted **500+ GMP audits** across 35+ countries.
+• Expert knowledge in US FDA, EU GMP, and WHO standards.
+• Specialized in complex remediation and system transformations.
 
-• M. Pharm (Pharmaceutical Sciences)
-• 24+ years of experience in global pharmaceutical quality
-• Conducted 500+ GMP audits across 35+ countries
-• NSF & APIC Certified Auditor
-
-How may we assist you today?`,
+Which area of expertise do you need to focus on?`,
     options: [
-      { label: 'GMP Audits', next: 'gmp_audit' },
+      { label: 'GMP Audits & Gap Analysis', next: 'gmp_audit' },
+      { label: 'Warning Letter / 483 Remediation', next: 'remediation' },
+      { label: 'Data Integrity & Digital Systems', next: 'data_integrity' },
+      { label: 'Quality Systems (QMS)', next: 'quality_system' },
+      { label: 'New Facility Setup', next: 'new_facility' },
+    ],
+  },
+
+  service_overview: {
+    id: 'service_overview',
+    message: `We provide end-to-end consulting for:
+• **Regulatory Readiness**: Preparing you for US FDA, MHRA, and EU inspections.
+• **Compliance**: Data Integrity ALCOA+ audits and QMS implementation.
+• **Technical Services**: Facility design review and validation support.
+
+Which one peaks your interest?`,
+    options: [
       { label: 'Regulatory Readiness', next: 'inspection_ready' },
-      { label: 'Quality Systems & CAPA', next: 'quality_system' },
-      { label: 'Speak to Ravi B', next: 'lead_name' },
+      { label: 'Data Integrity', next: 'data_integrity' },
+      { label: 'Talk to an Expert', next: 'lead_name' },
     ],
   },
 
@@ -46,14 +74,59 @@ How may we assist you today?`,
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   gmp_audit: {
     id: 'gmp_audit',
-    message: `🔍 We conduct comprehensive GMP audits across APIs, formulations, and QC laboratories.
+    message: `🔍 Our audits are designed to identify risks before regulators do. We cover APIs, Formulations, and QC Labs.
 
-What type of facility do you operate?`,
+What type of facility needs an assessment?`,
     options: [
-      { label: 'API Manufacturing', next: 'regulatory_market' },
+      { label: 'API / Intermediate', next: 'regulatory_market' },
       { label: 'Finished Dosage (FDF)', next: 'regulatory_market' },
-      { label: 'QC Laboratory', next: 'regulatory_market' },
-      { label: 'Multiple Facilities', next: 'regulatory_market' },
+      { label: 'QC / Microbiology Lab', next: 'regulatory_market' },
+      { label: 'Biologicals / Sterile', next: 'regulatory_market' },
+    ],
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // REMEDIATION (NEW)
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  remediation: {
+    id: 'remediation',
+    message: `🚨 Handling regulatory observations (483s, Warning Letters, or Import Alerts) requires a strategic and technical approach.
+
+Are you looking for immediate support with a response or long-term remediation?`,
+    options: [
+      { label: 'Respond to 483/Warning Letter', next: 'urgency_check' },
+      { label: 'Global Correction Plan', next: 'facility_scale' },
+      { label: 'System Recovery', next: 'quality_system' },
+    ],
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // DATA INTEGRITY (NEW)
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  data_integrity: {
+    id: 'data_integrity',
+    message: `💻 Data Integrity is the backbone of trust in Pharma. We specialize in ALCOA+ audits and computerized system validation (CSV).
+
+What is your current challenge?`,
+    options: [
+      { label: 'DI Gap Assessment', next: 'regulatory_market' },
+      { label: 'Computerized System Validation', next: 'facility_scale' },
+      { label: 'DI Training for Staff', next: 'free_explain' },
+    ],
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // NEW FACILITY (NEW)
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  new_facility: {
+    id: 'new_facility',
+    message: `🏗️ Building a new facility or expanding? We ensure your design and flow are compliant from day one.
+
+At what stage is your project?`,
+    options: [
+      { label: 'Conceptual Design / URS', next: 'regulatory_market' },
+      { label: 'Commissioning & Qualification', next: 'regulatory_market' },
+      { label: 'Pre-approval Inspection (PAI)', next: 'urgency_check' },
     ],
   },
 
@@ -63,23 +136,23 @@ What type of facility do you operate?`,
   regulatory_market: {
     id: 'regulatory_market',
     message:
-      "🌍 Which regulatory markets are you targeting?",
+      "🌍 Understanding the target market is crucial for compliance strategy. Which markets are you targeting?",
     options: [
-      { label: 'US FDA', next: 'audit_goal' },
-      { label: 'EU GMP', next: 'audit_goal' },
-      { label: 'WHO / Global', next: 'audit_goal' },
-      { label: 'Multiple Markets', next: 'audit_goal' },
+      { label: 'US FDA (United States)', next: 'audit_goal' },
+      { label: 'EU GMP (Europe)', next: 'audit_goal' },
+      { label: 'WHO / PICS', next: 'audit_goal' },
+      { label: 'Multiple Global Markets', next: 'audit_goal' },
     ],
   },
 
   audit_goal: {
     id: 'audit_goal',
     message:
-      "🎯 What is your primary objective?",
+      "🎯 What is the primary goal of this engagement?",
     options: [
-      { label: 'Pre-inspection readiness', next: 'facility_scale' },
-      { label: 'Gap assessment', next: 'facility_scale' },
-      { label: 'Vendor qualification (CMO)', next: 'facility_scale' },
+      { label: 'Pre-inspection Mock Audit', next: 'facility_scale' },
+      { label: 'Routine Vendor Audit', next: 'facility_scale' },
+      { label: 'Technical Gap Analysis', next: 'facility_scale' },
     ],
   },
 
@@ -88,13 +161,13 @@ What type of facility do you operate?`,
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   inspection_ready: {
     id: 'inspection_ready',
-    message: `🛡️ We prepare organizations for regulatory inspections (US FDA, EU GMP, WHO).
+    message: `🛡️ We help you build a culture of "Always Ready." No more last-minute panics.
 
-What stage are you in?`,
+Do you have a confirmed inspection date?`,
     options: [
-      { label: 'Upcoming inspection', next: 'urgency_check' },
-      { label: 'Mock inspection required', next: 'urgency_check' },
-      { label: 'Gap analysis', next: 'urgency_check' },
+      { label: 'Yes, it\'s imminent', next: 'urgency_check' },
+      { label: 'No, we are preparing early', next: 'facility_scale' },
+      { label: 'Mock Audit required', next: 'facility_scale' },
     ],
   },
 
@@ -103,14 +176,14 @@ What stage are you in?`,
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   quality_system: {
     id: 'quality_system',
-    message: `⚙️ We assess QMS, CAPA, and risk systems aligned with ICH Q7, Q9, Q10.
+    message: `⚙️ A robust QMS (ICH Q10) is more than just SOPs—it's about effective outcomes.
 
-What do you need help with?`,
+Which QMS element needs the most attention?`,
     options: [
-      { label: 'CAPA effectiveness', next: 'facility_scale' },
-      { label: 'Deviation management', next: 'facility_scale' },
-      { label: 'Risk management', next: 'facility_scale' },
-      { label: 'Full QMS assessment', next: 'facility_scale' },
+      { label: 'CAPA & Deviations', next: 'facility_scale' },
+      { label: 'Risk Management (QRM)', next: 'facility_scale' },
+      { label: 'Change Control', next: 'facility_scale' },
+      { label: 'Internal Audit Program', next: 'facility_scale' },
     ],
   },
 
@@ -120,11 +193,11 @@ What do you need help with?`,
   facility_scale: {
     id: 'facility_scale',
     message:
-      "🏭 What is the scale of your operations?",
+      "🏭 To provide an accurate estimate, could you tell me the scale of the operations involved?",
     options: [
-      { label: 'Single site', next: 'authority_push' },
-      { label: 'Multiple sites', next: 'authority_push' },
-      { label: 'Global operations', next: 'authority_push' },
+      { label: 'Single Facility / Unit', next: 'authority_push' },
+      { label: 'Multi-site Organization', next: 'authority_push' },
+      { label: 'Global Corporate Level', next: 'authority_push' },
     ],
   },
 
@@ -133,14 +206,12 @@ What do you need help with?`,
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   authority_push: {
     id: 'authority_push',
-    message: `✅ This engagement will be handled directly by **Ravi B** (Founder & Principal Consultant).
+    message: `Great. **Ravi B** personally oversees all strategic engagements to ensure the highest level of technical accuracy and regulatory alignment.
 
-With 24+ years of experience and 500+ GMP audits across 35+ countries, he brings deep expertise across US FDA, EU GMP, and WHO standards.
-
-Would you like to connect for a detailed discussion?`,
+Would you like to schedule a confidential discussion with him?`,
     options: [
-      { label: 'Yes, connect me', next: 'lead_name' },
-      { label: 'Share requirement first', next: 'free_explain' },
+      { label: 'Yes, let\'s connect', next: 'lead_name' },
+      { label: 'I have specific questions first', next: 'free_explain' },
     ],
   },
 
@@ -149,19 +220,19 @@ Would you like to connect for a detailed discussion?`,
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   urgency_check: {
     id: 'urgency_check',
-    message: `⏳ How soon do you need support?`,
+    message: `⏳ Timelines are critical in regulatory affairs. How fast do you need us to move?`,
     options: [
-      { label: 'Immediate (within 7 days)', next: 'priority_route' },
+      { label: 'Immediate (Critical)', next: 'priority_route' },
       { label: 'Within 2–4 weeks', next: 'lead_name' },
-      { label: 'Planning stage', next: 'free_explain' },
+      { label: 'Planning for next quarter', next: 'lead_name' },
     ],
   },
 
   priority_route: {
     id: 'priority_route',
-    message: `🚨 We prioritize critical regulatory timelines.
+    message: `🚨 Understood. We prioritize urgent regulatory risks.
 
-Let’s connect you with **Ravi B** immediately.`,
+I need a few details to flag this for Ravi B immediately.`,
     next: 'lead_name',
   },
 
@@ -171,7 +242,7 @@ Let’s connect you with **Ravi B** immediately.`,
   free_explain: {
     id: 'free_explain',
     message:
-      "✍️ Please briefly describe your requirement:",
+      "✍️ Please share a brief summary of your requirement or any specific questions you have:",
     freeText: true,
     freeTextNext: 'lead_name',
   },
@@ -182,7 +253,7 @@ Let’s connect you with **Ravi B** immediately.`,
   lead_name: {
     id: 'lead_name',
     message:
-      "👤 May I have your name?",
+      "To get started, may I have your full name?",
     inputField: 'name',
     inputNext: 'lead_company',
   },
@@ -190,7 +261,7 @@ Let’s connect you with **Ravi B** immediately.`,
   lead_company: {
     id: 'lead_company',
     message:
-      "🏢 Company name?",
+      "And which organization do you represent?",
     freeText: true,
     freeTextNext: 'lead_email',
   },
@@ -198,7 +269,7 @@ Let’s connect you with **Ravi B** immediately.`,
   lead_email: {
     id: 'lead_email',
     message:
-      "📧 Your email address?",
+      "Perfect. Where should we send the proposal or further information?",
     inputField: 'email',
     inputNext: 'lead_whatsapp',
   },
@@ -206,7 +277,7 @@ Let’s connect you with **Ravi B** immediately.`,
   lead_whatsapp: {
     id: 'lead_whatsapp',
     message:
-      "📱 Contact number (WhatsApp preferred):",
+      "Lastly, your contact number (WhatsApp is preferred for faster coordination):",
     inputField: 'whatsapp',
     inputNext: 'thank_you',
   },
@@ -216,14 +287,14 @@ Let’s connect you with **Ravi B** immediately.`,
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   thank_you: {
     id: 'thank_you',
-    message: `🎉 Thank you for connecting with us.
+    message: `🎉 Thank you! Your request has been logged.
 
-Ravi B, Founder & Principal Consultant, will personally review your requirement and get in touch with you within 12–24 hours.
+**Ravi B** will review your details personally. You can expect a response within **12–24 hours**.
 
-🔒 All discussions are handled with the utmost confidentiality and in full alignment with global GMP standards.`,
+In the meantime, you can reach out directly via the buttons below.`,
     options: [
       { label: 'Chat on WhatsApp', next: 'exit_whatsapp' },
-      { label: 'Send Email', next: 'exit_email' },
+      { label: 'Send an Email', next: 'exit_email' },
     ],
   },
 
@@ -232,15 +303,15 @@ Ravi B, Founder & Principal Consultant, will personally review your requirement 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   exit_whatsapp: {
     id: 'exit_whatsapp',
-    message: 'Opening WhatsApp...',
+    message: 'Redirecting to WhatsApp...',
     externalLink: `https://wa.me/${WHATSAPP_NUMBER}`,
     end: true,
   },
 
   exit_email: {
     id: 'exit_email',
-    message: 'Opening email...',
-    externalLink: `mailto:${EMAIL_ADDRESS}?subject=GMP Consulting Inquiry`,
+    message: 'Opening your email client...',
+    externalLink: `mailto:${EMAIL_ADDRESS}?subject=Consultation Inquiry - QUEST Pharma`,
     end: true,
   },
 };
